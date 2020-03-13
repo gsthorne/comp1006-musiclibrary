@@ -7,7 +7,7 @@ require_once('header.php');
 $name = $_POST['name'];
 
 // connect to db
-$db = NEW pdo('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+require_once('db.php');
 
 // set up a query to fetch the selected artist
 $sql = "SELECT * FROM artists WHERE name = :name";

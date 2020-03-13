@@ -7,14 +7,11 @@
 <body>
 <?php
 session_start();
-if (empty($_SESSION['userId'])) {
-    header('location:login.php');
-    exit();
-}
+require_once("auth.php");
 // parse the artistId from the url
 $artistId = $_GET['artistId'];
 // connect to the database
-$db = new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+require_once('db.php');
 // create the sql delete command
 $sql = 'DELETE FROM artists WHERE artistId = :artistId';
 // pass the artistId parameter to the command

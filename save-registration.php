@@ -29,7 +29,7 @@ if ($ok) {
     $password = password_hash($password, PASSWORD_DEFAULT);
 //    echo $password;
     // connect to db
-    $db = new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+    require_once('db.php');
     // duplicate users check before insert
     $sql = "SELECT * FROM users WHERE username = :username";
     $cmd = $db->prepare($sql);

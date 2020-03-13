@@ -1,4 +1,6 @@
 <?php
+// set page title
+$title = "Login";
 require_once('header.php');
 ?>
 
@@ -28,7 +30,6 @@ require_once('header.php');
     </form>
 </main>
 
-<script src="js/scripts.js"></script>
-
-</body>
-</html>
+<?php
+require_once('footer.php');
+?>

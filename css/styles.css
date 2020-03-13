@@ -1,0 +1,34 @@
+.btn-primary {
+    background-color: #132D8F;
+}
+
+.bg-custom {
+    background-color: #132D8F;
+}
+
+h1 {
+    color: #132D8F;
+}
+
+td a {
+    color: #5871CC;
+}
+
+body {
+    font-family:'Montserrat', sans-serif;
+}
+
+/* Sticky Footer Classes */
+/* src: https://startbootstrap.com/snippets/sticky-footer-flexbox/ */
+html,
+body {
+    height: 100%;
+}
+
+#page-content {
+    flex: 1 0 auto;
+}
+
+#sticky-footer {
+    flex-shrink: 0;
+}

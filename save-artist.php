@@ -11,10 +11,7 @@
 
 <?php
 session_start();
-if (empty($_SESSION['userId'])) {
-    header('location:login.php');
-    exit();
-}
+require_once("auth.php");
 // save the form inputs in variables (optional but recommended)
 $name = htmlspecialchars($_POST['name']);
 $yearFounded = $_POST['yearFounded'];
@@ -45,7 +42,7 @@ if (!empty($website)) {
 
 if ($ok) {
     // connect to the database
-    $db= new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+    require_once('db.php');
 
     // adding or editing depending on if we have an artistId
     if (empty($artistId)) {

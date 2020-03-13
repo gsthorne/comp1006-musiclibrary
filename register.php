@@ -1,8 +1,8 @@
 <?php
+// set page title
+$title = "Register";
 require_once('header.php');
 ?>
-
-<main class="container">
     <h1>User Registration</h1>
     <form method="post" action="save-registration.php">
         <fieldset class="form-group">
@@ -21,9 +21,8 @@ require_once('header.php');
             <input type="submit" value="Register" class="btn btn-info" />
         </div>
     </form>
-</main>
 
-<script src="js/scripts.js"></script>
 
-</body>
-</html>
+<?php
+require_once('footer.php');
+?>

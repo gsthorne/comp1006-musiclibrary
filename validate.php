@@ -9,7 +9,7 @@
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-$db = new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+require_once('db.php');
 
 $sql = "SELECT userId, password FROM users WHERE username = :username";
 
@@ -30,6 +30,8 @@ else {
     session_start();
     // create a session variable called 'userId' and fill it from the id in our login query above
     $_SESSION['userId'] = $user['userId'];
+    // also store username in a second session variable
+    $_SESSION['username'] = $username;
     // redirect to artists-list page
     header('location:artists-list.php');
 }

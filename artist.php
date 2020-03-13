@@ -1,9 +1,12 @@
 <?php
-session_start();
-if (empty($_SESSION['userId'])) {
-    header('location:login.php');
-    exit();
-}
+// set page title
+$title = "Artist Details";
+require_once('header.php');
+?>
+<?php
+// session_start() is already being called
+//session_start();
+require_once("auth.php");
 // are we adding or editing? if editing, get the selected artist to populate the form
 // initialize variables for each field
 $artistId = null;
@@ -14,7 +17,7 @@ $website = null;
 if (!empty($_GET['artistId'])) {
     $artistId = $_GET['artistId'];
     // connect
-    $db = new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+    require_once('db.php');
     // fetch the data
     $sql = "SELECT * FROM artists WHERE artistId = :artistId";
     $cmd = $db->prepare($sql);
@@ -28,9 +31,6 @@ if (!empty($_GET['artistId'])) {
     // disconnect
     $db = null;
 }
-?>
-<?php
-require_once('header.php');
 ?>
 <body>
     <h1>Artist Details</h1>
@@ -50,5 +50,6 @@ require_once('header.php');
         <input name="artistId" id="artistId" value="<?php echo $artistId ?>" type="hidden">
         <button class="btn btn-primary offset-2">Save</button>
     </form>
-</body>
-</html>
+<?php
+require_once('footer.php');
+?>

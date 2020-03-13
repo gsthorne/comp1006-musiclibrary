@@ -1,15 +1,18 @@
 <?php
+// set page title
+$title = "Artists List";
 require_once('header.php');
 ?>
 <h1>Artist List</h1>
 <?php
-session_start();
+// session_start() is now called in the header above and can only be called once
+// session_start();
 if (!empty($_SESSION['userId'])) {
     echo'<a href="artist.php">Add a new artist</a>';
 }
 
 // 1. Connect to the db.  Host: 172.31.22.43, DB: dbNameHere, Username: usernameHere, PW: passwordHere
-$db= new PDO('mysql:host=172.31.22.43;dbname=Gillian_S1095952', 'Gillian_S1095952', 'WlLdxV5ePi');
+require_once('db.php');
 
 //  2. Write the SQL Query to read all the records from the artists table and store in a variable
 $query = "Select * from artists";
@@ -48,7 +51,6 @@ echo '</table>';
 // 6. Disconnect from the database
 $db = null;
 ?>
-<!-- javascript -->
-<script src="js/scripts.js" type="text/javascript"></script>
-</body>
-</html>
+<?php
+require_once('footer.php');
+?>
