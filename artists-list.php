@@ -29,7 +29,7 @@ try {
     $artists = $cmd->fetchAll();
 
 // 4a. Create a grid with a header row
-    echo '<table class="table table-striped table-hover"><thead><th>Name</th><th>Year Founded</th><th>Website</th><th></th></thead>';
+    echo '<table class="table table-striped table-hover"><thead><th>Name</th><th>Year Founded</th><th>Website</th><th></th><th></th></thead>';
 
 // 5. Use a foreach loop to iterate (cycle) through all the values in the $artists variable.  Inside this loop, use an echo command to display the name of each person.  See https://www.php.net/manual/en/control-structures.foreach.php for details.
     Foreach ($artists as $value) {
@@ -42,6 +42,12 @@ try {
         echo '<td>' . $value['yearFounded'] . '</td>
           <td>' . '<a href="' . $value['website'] . '" target="_new">' . $value['website'] . '</a></td>
           ';
+        if (!empty($value['photo'])) {
+            echo '<td><img src="img/artists/' . $value['photo'] . '" alt="Artist Photo" class="thumb">';
+        }
+        else {
+            echo '<td></td>';
+        }
         if (!empty($_SESSION['userId'])) {
             echo '<td><a href="delete-artist.php?artistId=' . $value['artistId'] . '" class="btn btn-danger" onclick="return confirmDelete()">Delete</a></td>
           ';

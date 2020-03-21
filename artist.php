@@ -13,6 +13,7 @@ $artistId = null;
 $name = null;
 $yearFounded = null;
 $website = null;
+$photo = null;
 
 if (!empty($_GET['artistId'])) {
     $artistId = $_GET['artistId'];
@@ -28,13 +29,14 @@ if (!empty($_GET['artistId'])) {
     $name = $artist['name'];
     $yearFounded = $artist['yearFounded'];
     $website = $artist['website'];
+    $photo = $artist['photo'];
     // disconnect
     $db = null;
 }
 ?>
 <body>
     <h1>Artist Details</h1>
-    <form action="save-artist.php" method="post">
+    <form action="save-artist.php" method="post" enctype="multipart/form-data">
         <fieldset>
             <label for="name" class="col-sm-2">Name: *</label>
             <input name="name" id="name" required value="<?php echo $name; ?>">
@@ -47,6 +49,17 @@ if (!empty($_GET['artistId'])) {
             <label for="website" class="col-sm-2">Website: </label>
             <input name="website" id="website" type="url" value="<?php echo $website; ?>">
         </fieldset>
+        <fieldset>
+            <label for="photo" class="col-sm-2">Photo: </label>
+            <input name="photo" id="photo" type="file">
+        </fieldset>
+        <?php
+        if (!empty($photo)) {
+            echo '<div class="offset-2">';
+            echo '<img src="img/artists/' . $photo . '" alt="Artist Photo">';
+            echo '</div>';
+        }
+        ?>
         <input name="artistId" id="artistId" value="<?php echo $artistId ?>" type="hidden">
         <button class="btn btn-primary offset-2">Save</button>
     </form>
